@@ -1,0 +1,63 @@
+<h1>Новая задача</h1>
+<form id = "frm_newTask" action = "/create" method = "post" enctype = "multipart/form-data">
+<table>
+<tr>
+<td>
+<label for = "fld_user_name">Имя пользователя:</label>
+</td>
+<td>
+<input type = "text" name = "user_name" id = "fld_user_name" />
+</td>
+</tr>
+<tr>
+<td>
+<label for = "fld_user_email">Электронная почта:</label>
+</td>
+<td>
+<input type = "text" name = "user_email" id = "fld_user_email" />
+</td>
+</tr>
+<tr>
+<td>
+<label for = "fld_image">Изображение:</label>
+</td>
+<td>
+<input type = "file" accept = ".jpg,.png,.gif" name = "image" id = "fld_image" />
+</td>
+</tr>
+<tr>
+<td>
+<label for = "fld_description">Описание:</label>
+</td>
+<td>
+<textarea name = "description" id = "fld_description">
+</textarea>
+</td>
+</tr>
+<tr>
+<td>
+<button id = "btn_preview">Предварительный просмотр</button>
+</td>
+<td>
+<button id = "btn_save">Сохранить</button>
+</td>
+</tr>
+</table>
+</form>
+
+<div id = "preview_modal" class = "modal">
+    <div id = "modal-content">
+        <div id = "modal-header">
+            <button id = "btn_closeModal">&times;</button>
+            <h1>Предварительный просмотр</h1>
+        </div>
+        <div id = "modal-body">
+        </div>
+        <div id = "modal-footer">
+            <button id = "btn_modal-save">Сохранить</button>
+            <button id = "btn_modal-cancel">Отмена</button>
+        </div>
+    </div>
+</div>
+<script type = "text/javascript" src = "/assets/previewer.js">
+</script>

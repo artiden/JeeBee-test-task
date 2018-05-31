@@ -1,0 +1,89 @@
+{%  extends "layout.twig" %}
+{%  block title %}Список задач{% endblock %}
+{% block content %}
+<h1>Список задач</h1>
+{% if tasks is empty %}
+Список пуст.
+{% else %}
+<p>Что бы отсортировать записи, кликните по нужному заголовку столбца</p>
+<table>
+<thead>
+<tr>
+<th><a href = "/?order=name">Имя пользователя</a></th>
+<th><a href = "/?order=email">E-mail</a></th>
+<th>Изображение</th>
+<th>Описание</th>
+<th><a href = "/?order=status">Завершена?</a></th>
+</tr>
+</thead>
+<tbody>
+{%  for task in tasks %}
+{% set image = task.getImage() %}
+<tr>
+<td>{{  task.getUserName() }}</td>
+<td>{{ task.getUserEmail() }}</td>
+<td><img alt = "Task image" src = "{{ image ? "/images/#{image}" : "/assets/no-image.png" }}" /></td>
+<td>{{ task.getDescription() }}</td>
+<td>
+{% if task.isDone() %}
++
+{% else %}
+{% if isAdmin %}
+<button class = "edit-task" data-task-id = "{{ task.getId() }}" data-task-description = "{{ task.getDescription() }}">Редактировать</button>
+{% else %}
+-
+{% endif %}
+{% endif %}
+</td>
+</tr>
+{%  endfor %}
+</tbody>
+</table>
+Страница:
+{% for p in (1 .. totalPages) %}
+{% if currentPage == p %}
+{{ p }}
+{% else %}
+<a href = "/?page={{ p }}{{ order ? "&order=#{order}" : "" }}">{{ p }}</a>
+{% endif %}
+{% endfor %}
+{% endif %}
+{{ include('newTask.twig') }}
+<div id = "edit-box" class = "modal">
+    <div id = "edit-content">
+        <div id = "edit-header">
+            <button id = "btn_closeEdit">&times;</button>
+            <h1>Редактирование задачи</h1>
+        </div>
+        <div id = "edit-body">
+            <form action ="/edit" method = "post" id = "frm_edit">
+            <input type = "hidden" name = "id" id = "fld_task-id" />
+            <table>
+            <thead>
+            <tr>
+            <th>Описание</th>
+            <th>Завершена?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>
+            <textarea name = "description" id = "fld_edit-description">
+            </textarea>
+            </td>
+            <td>
+            <input type = "checkbox" name = "done" value = "1" />
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </form>
+        </div>
+        <div id = "edit-footer">
+            <button id = "btn_edit-save">Сохранить</button>
+            <button id = "btn_edit-cancel">Отмена</button>
+        </div>
+    </div>
+</div>
+<script type = "text/javascript" src = "/assets/editor.js"></script>
+{% endblock %}

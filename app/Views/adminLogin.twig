@@ -1,0 +1,21 @@
+{% extends("layout.twig") %}
+{% block title %}
+Вход в админ-панель
+{% endblock %}
+{% block content %}
+<h1>Вход в админ-панель</h1>
+{% if error is not empty %}
+{{ error }}
+{% endif %}
+<form action = "/login" method = "post">
+<table>
+<tr>
+<td><label for = "fld_user">Имя пользователя:</label></td>
+<td><input type = "text" name = "user" /></td>
+<td><label for = "fld_password">Пароль:</label></td>
+<td><input type = "password" name = "password" /></td>
+<td><input type = "submit" value = "Вход" /></td>
+</tr>
+</table>
+</form>
+{% endblock %}

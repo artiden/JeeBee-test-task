@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} - BeeJee test task</title>
+        <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="content">
+        {% if isAdmin %}
+        Вы вошли как администратор. <a href = "/logout">Выйти</a>
+        {% else %}
+        Администратор? <a href = "/login">Войдите</a>
+        {% endif %}
+        {% block content %}{% endblock %}
+        </div>
+        <div id="footer">
+            {% block footer %}
+                &copy; <a href="mailto: hmx@ukr.net">Denys Revega</a>.
+            {% endblock %}
+        </div>
+    </body>
+</html>
