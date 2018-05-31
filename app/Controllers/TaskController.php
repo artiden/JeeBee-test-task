@@ -64,7 +64,7 @@ class TaskController extends baseController
                 $isImage = false;
                 $imageName = null;
             }
-            if ($isImage && move_uploaded_file($_FILES['image']['tmp_name'], __DIR__.'/../../public/images/'.$imageName)) {
+            if ($isImage && move_uploaded_file($_FILES['image']['tmp_name'], __DIR__.'/../../images/'.$imageName)) {
                 $task->setImage($imageName);
             }
         }

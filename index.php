@@ -5,18 +5,8 @@ use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
 
 error_reporting(E_ALL);
-require __DIR__.'/../bootstrap.php';
+require __DIR__.'/bootstrap.php';
 
-// $task = new Task();
-// $task->setDescription('Learn Doctrine');
-// $task->setUserName('Denys');
-// $task->setUserEmail('hmx@ukr.net');
-// $task->setCreatedAt();
-
-// $entityManager->persist($task);
-// $entityManager->flush();
-//$task = $entityManager->find(Task::class, 1);
-//echo $task->getDescription();
 $router = new RouteCollector();
 $router->get('/', ['App\Controllers\TaskController', 'index']);
 $router->post('/create', ['App\Controllers\TaskController', 'create']);
