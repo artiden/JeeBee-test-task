@@ -4,12 +4,10 @@ $(document).ready(function(){
         var description = $(this).data("task-description");
         edit(taskId, description);
     });
-    $("#btn_closeEdit").on("click", function(event){
+    $(document).on("click", ".js-close-edit", function(event){
         hideEditBox();
     });
-    $("#btn_edit-cancel").on("click", function(event){
-        hideEditBox();
-    });
+
     $("#btn_edit-save").on("click", function(event){
         $("#frm_edit").submit();
     });

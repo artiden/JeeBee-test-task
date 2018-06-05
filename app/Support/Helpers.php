@@ -15,7 +15,7 @@ if (!function_exists('view')) {
         static $twig = null;
 
         if (is_null($twig)) {
-            $loader = new Twig_Loader_Filesystem(__DIR__.'/../views');
+            $loader = new Twig_Loader_Filesystem(__DIR__.'/../Views');
             $twig = new Twig_Environment($loader);
         }
 

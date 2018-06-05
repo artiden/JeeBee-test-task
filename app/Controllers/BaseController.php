@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-abstract class baseController
+abstract class BaseController
 {
     protected function getParam(string $name, $default = null)
     {

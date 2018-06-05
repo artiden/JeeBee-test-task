@@ -7,7 +7,7 @@ use App\Models\Task;
 use App\Repositories\TaskRepository;
 use Suin\ImageResizer\ImageResizer;
 
-class TaskController extends baseController
+class TaskController extends BaseController
 {
     private $repository;
 

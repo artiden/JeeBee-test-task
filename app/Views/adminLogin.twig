@@ -1,21 +1,31 @@
 {% extends("layout.twig") %}
 {% block title %}
-Вход в админ-панель
+    Вход в админ-панель
 {% endblock %}
 {% block content %}
-<h1>Вход в админ-панель</h1>
-{% if error is not empty %}
-{{ error }}
-{% endif %}
-<form action = "/login" method = "post">
-<table>
-<tr>
-<td><label for = "fld_user">Имя пользователя:</label></td>
-<td><input type = "text" name = "user" /></td>
-<td><label for = "fld_password">Пароль:</label></td>
-<td><input type = "password" name = "password" /></td>
-<td><input type = "submit" value = "Вход" /></td>
-</tr>
-</table>
-</form>
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form action="/login" method="post">
+                <div class="form-group text-center">
+                    <h4>Вход в админ-панель</h4>
+                </div>
+                <div class="form-group">
+                    <label for="name">Имя пользователя:</label>
+                    <input type="text" class="form-control" id="name" name="user">
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group text-danger">
+                    {% if error is not empty %}
+                        {{ error }}
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary">Вход</button>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}

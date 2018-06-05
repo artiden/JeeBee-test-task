@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{% block title %}{% endblock %} - BeeJee test task</title>
-        <link rel="stylesheet" type="text/css" href="/assets/styles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    </head>
-    <body>
-        <div id="content">
-        {% if isAdmin %}
-        Вы вошли как администратор. <a href = "/logout">Выйти</a>
-        {% else %}
-        Администратор? <a href = "/login">Войдите</a>
-        {% endif %}
+<head>
+    <title>{% block title %}{% endblock %} - BeeJee test task</title>
+    <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<div id="content">
+    <header class="header">
+        <div class="container">
+
+            {% if isAdmin %}
+                Вы вошли как администратор. <a href="/logout">Выйти</a>
+            {% else %}
+                Администратор? <a href="/login">Войдите</a>
+            {% endif %}
+        </div>
+    </header>
+    <div class="container">
         {% block content %}{% endblock %}
-        </div>
-        <div id="footer">
-            {% block footer %}
-                &copy; <a href="mailto: hmx@ukr.net">Denys Revega</a>.
-            {% endblock %}
-        </div>
-    </body>
+    </div>
+
+    <div class="h-footer"></div>
+</div>
+<div class="footer">
+    <div class="container">
+        {% block footer %}
+            &copy; <a href="mailto: hmx@ukr.net">Denys Revega</a>.
+        {% endblock %}
+    </div>
+</div>
+</div>
+</body>
 </html>

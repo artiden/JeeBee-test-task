@@ -12,14 +12,11 @@ $(document).ready(function(){
     function showPreview()
     {
         $("#btn_save").prop("disabled", true);
-        $("#btn_closeModal").on("click", function(event){
-            hidePreview();
-        });
         $("#btn_modal-save").on("click", function(event){
             hidePreview();
             $("#frm_newTask").submit();
         });
-        $("#btn_modal-cancel").on("click", function(event){
+        $(".js-cancel-view").on("click", function(event){
             hidePreview();
         });
         var task = {
@@ -34,9 +31,10 @@ $(document).ready(function(){
         $("#preview_modal").css("display", "block");
     }
 
-    function createPreviewTable(headerColumns, task)
-    {
-        var table = $("<table></table>");
+    function createPreviewTable(headerColumns, task) {
+        var table = $("<table/>", {
+            'class': 'table'
+        });
         var tHead = $("<thead></thead>");
         var tBody = $("<tbody></tbody>");
         var th = $("<th></th>");
@@ -99,8 +97,8 @@ $(document).ready(function(){
 
     function hidePreview()
     {
+        $("#preview_modal").hide();
         $("#modal-body").empty();
-        $("#preview_modal").css("display", "none");
         $("#btn_save").prop("disabled", false);
     }
 });

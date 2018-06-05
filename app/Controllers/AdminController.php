@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use App\Support\Config;
 
-class AdminController extends baseController
+class AdminController extends BaseController
 {
     public function login()
     {
